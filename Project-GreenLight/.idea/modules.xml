@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/All_Petri_Nets_Framework_4_IntelliJ-master/All_Petri_FW/All_Petri_FW/All_Petri_FW.iml" filepath="$PROJECT_DIR$/All_Petri_Nets_Framework_4_IntelliJ-master/All_Petri_FW/All_Petri_FW/All_Petri_FW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/All_Petri_Nets_Framework_4_IntelliJ-master.iml" filepath="$PROJECT_DIR$/.idea/All_Petri_Nets_Framework_4_IntelliJ-master.iml" />
+    </modules>
+  </component>
+</project>
