@@ -397,6 +397,10 @@ public class Intersection1 {
 
         t8.Delay = 0;
         pn.Transitions.add(t8);
+        
+        PetriNetWindow frame = new PetriNetWindow(false);
+		frame.petriNet = pn;
+		frame.setVisible(true);
 
     }
 
