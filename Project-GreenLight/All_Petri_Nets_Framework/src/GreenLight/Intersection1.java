@@ -88,7 +88,7 @@ public class Intersection1 {
         pn.PlaceList.add(p_x3);
 
         DataString p_tl3 = new DataString();
-        p_tl3.SetName("TL3");
+        p_tl3.SetName("TL2");
         pn.PlaceList.add(p_tl3);
         
         DataString p_tl3_left = new DataString();
@@ -119,7 +119,7 @@ public class Intersection1 {
         pn.PlaceList.add(p_x2);
 
         DataString p_tl2 = new DataString(); //p7.Printable = false;
-        p_tl2.SetName("TL2");
+        p_tl2.SetName("TL3");
         pn.PlaceList.add(p_tl2);
        
 
@@ -488,7 +488,7 @@ public class Intersection1 {
         PetriTransition t6 = new PetriTransition(pn);
         t6.TransitionName = "T_e4";
         t6.InputPlaceName.add("P_x4");
-        t6.InputPlaceName.add("TL4");
+        t6.InputPlaceName.add("TL2");
 
         Condition T6Ct1 = new Condition(t6, "TL4", TransitionCondition.Equal, "green");
         Condition T6Ct2 = new Condition(t6, "P_x4", TransitionCondition.HaveCar);
@@ -497,7 +497,7 @@ public class Intersection1 {
         GuardMapping grdT6 = new GuardMapping();
         grdT6.condition = T6Ct1;
         grdT6.Activations.add(new Activation(t6, "P_x4", TransitionOperation.PopElementWithoutTarget, "P_b4"));
-        grdT6.Activations.add(new Activation(t6, "TL4", TransitionOperation.Move, "TL4"));
+        grdT6.Activations.add(new Activation(t6, "TL2", TransitionOperation.Move, "TL2"));
         t6.GuardMappingList.add(grdT6);
 
         t6.Delay = 0;
@@ -544,7 +544,7 @@ public class Intersection1 {
         GuardMapping grdT8 = new GuardMapping();
         grdT8.condition = T8Ct1;
         grdT8.Activations.add(new Activation(t8, "P_x3", TransitionOperation.PopElementWithoutTarget, "P_b4"));
-        grdT8.Activations.add(new Activation(t8, "TL3", TransitionOperation.Move, "TL3"));
+        grdT8.Activations.add(new Activation(t8, "TL2", TransitionOperation.Move, "TL2"));
         t8.GuardMappingList.add(grdT8);
 
         t8.Delay = 0;
