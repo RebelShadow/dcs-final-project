@@ -2,7 +2,7 @@ package Enumerations;
 
 import java.io.Serializable;
 
-public enum TransitionOperation implements Serializable{
+public enum TransitionOperation implements Serializable {
 	Undefined,
 	Add,
 	Sub,
@@ -32,5 +32,8 @@ public enum TransitionOperation implements Serializable{
 	Add_Fuzzy,
 	Sub_Fuzzy,
 	Prod_Fuzzy,
-	Div_Fuzzy
+	Div_Fuzzy,
+
+	// Added operation for handling taxis
+	PopTaxiToQueue
 }
