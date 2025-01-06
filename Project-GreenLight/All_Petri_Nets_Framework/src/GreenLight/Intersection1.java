@@ -392,14 +392,6 @@ public class Intersection1 {
         
         
         
-        
-        
-        
-        
-        
-        
-        
-
 
         // T1 ------------------------------------------------
         PetriTransition t1 = new PetriTransition(pn);
@@ -565,7 +557,7 @@ public class Intersection1 {
 	        GuardMapping grdT9 = new GuardMapping();
 	        grdT9.condition = T9Ct1;
 	        grdT9.Activations.add(new Activation(t9, "P_x1", TransitionOperation.PopElementWithoutTarget, "P_b1"));
-	        grdT9.Activations.add(new Activation(t9, "TL1", TransitionOperation.Move, "TL1"));
+	        grdT9.Activations.add(new Activation(t9, "TL1_L", TransitionOperation.Move, "TL1_L"));
 
 	        t9.GuardMappingList.add(grdT9);
 
@@ -712,7 +704,7 @@ public class Intersection1 {
 		        GuardMapping grdT18 = new GuardMapping();
 		        grdT18.condition = T18Ct1;
 		        grdT18.Activations.add(new Activation(t18, "P_x3", TransitionOperation.PopElementWithoutTarget, "P_b3"));
-		        grdT18.Activations.add(new Activation(t18, "TL1", TransitionOperation.Move, "TL1"));
+		        grdT18.Activations.add(new Activation(t18, "TL3_L", TransitionOperation.Move, "TL3_L"));
 
 		        t18.GuardMappingList.add(grdT18);
 
@@ -735,7 +727,7 @@ public class Intersection1 {
 
 		        GuardMapping grdT19 = new GuardMapping();
 		        grdT19.condition = T19Ct1;
-		        grdT19.Activations.add(new Activation(t19, "P_o3", TransitionOperation.AddElement, "Px1_o3"));
+		        grdT19.Activations.add(new Activation(t19, "P_o3", TransitionOperation.Move, "Px1_o3"));
 		        
 		        t19.GuardMappingList.add(grdT19);
 		        
@@ -750,7 +742,7 @@ public class Intersection1 {
 
 		        GuardMapping grdT19_new = new GuardMapping();
 		        grdT19_new.condition = T19Ct4;
-		        grdT19_new.Activations.add(new Activation(t19, "P_o3", TransitionOperation.AddElement, "Px1_o3"));
+		        grdT19_new.Activations.add(new Activation(t19, "P_o3", TransitionOperation.Move, "Px1_o3"));
 		        
 		        t19.GuardMappingList.add(grdT19_new);
 
@@ -759,7 +751,7 @@ public class Intersection1 {
 		        pn.Transitions.add(t19);
 		        
 		        
-		     // T20 -----------------------Bus-------------------------
+		     // T20 -----------------------Priority-------------------------
 		        PetriTransition t20 = new PetriTransition(pn);
 		        t20.TransitionName = "T1_o3";
 		        t20.InputPlaceName.add("Px1_o3");
