@@ -1,4 +1,4 @@
-package GreenLight;
+package proj4;
 
 import Components.*;
 import DataObjects.DataInteger;
@@ -9,7 +9,7 @@ import Enumerations.LogicConnector;
 import Enumerations.TransitionCondition;
 import Enumerations.TransitionOperation;
 
-public class Controller4F {
+public class Controller4F_Modified {
 
     public static void main (String []args) {
         PetriNet pn = new PetriNet();

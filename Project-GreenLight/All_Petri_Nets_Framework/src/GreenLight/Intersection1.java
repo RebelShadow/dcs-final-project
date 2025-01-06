@@ -196,7 +196,7 @@ public class Intersection1 {
         pn.PlaceList.add(Pt3_o3);
         
         DataCar PExit_car3 = new DataCar(); 
-        PExit_car3.SetName("PExit_car3");
+        PExit_car3.SetName("Pexit_car3");
         pn.PlaceList.add(PExit_car3);
         
 
@@ -356,12 +356,12 @@ public class Intersection1 {
 
         
         
-        Condition T25Ct1 = new Condition(t11, "P_o3", TransitionCondition.HaveCar);
+        Condition T25Ct1 = new Condition(t25, "P_o3", TransitionCondition.HaveCar);
 
         
         GuardMapping grdT25 = new GuardMapping();
         grdT25.condition = T25Ct1;
-        grdT25.Activations.add(new Activation(t25, "P_o3", TransitionOperation.PopElementWithTarget,"Pexit_car3"));
+        grdT25.Activations.add(new Activation(t25, "P_o3", TransitionOperation.PopElementWithoutTarget, "Pexit_car3"));
         
         t25.GuardMappingList.add(grdT25);
 
