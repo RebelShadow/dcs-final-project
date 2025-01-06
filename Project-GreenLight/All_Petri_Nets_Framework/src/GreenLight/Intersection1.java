@@ -488,7 +488,7 @@ public class Intersection1 {
         PetriTransition t6 = new PetriTransition(pn);
         t6.TransitionName = "T_e4";
         t6.InputPlaceName.add("P_x4");
-        t6.InputPlaceName.add("TL2");
+        t6.InputPlaceName.add("TL4");
 
         Condition T6Ct1 = new Condition(t6, "TL4", TransitionCondition.Equal, "green");
         Condition T6Ct2 = new Condition(t6, "P_x4", TransitionCondition.HaveCar);
@@ -497,7 +497,7 @@ public class Intersection1 {
         GuardMapping grdT6 = new GuardMapping();
         grdT6.condition = T6Ct1;
         grdT6.Activations.add(new Activation(t6, "P_x4", TransitionOperation.PopElementWithoutTarget, "P_b4"));
-        grdT6.Activations.add(new Activation(t6, "TL2", TransitionOperation.Move, "TL2"));
+        grdT6.Activations.add(new Activation(t6, "TL4", TransitionOperation.Move, "TL4"));
         t6.GuardMappingList.add(grdT6);
 
         t6.Delay = 0;
@@ -543,8 +543,8 @@ public class Intersection1 {
 
         GuardMapping grdT8 = new GuardMapping();
         grdT8.condition = T8Ct1;
-        grdT8.Activations.add(new Activation(t8, "P_x3", TransitionOperation.PopElementWithoutTarget, "P_b4"));
-        grdT8.Activations.add(new Activation(t8, "TL2", TransitionOperation.Move, "TL2"));
+        grdT8.Activations.add(new Activation(t8, "P_x3", TransitionOperation.PopElementWithoutTarget, "P_b3"));
+        grdT8.Activations.add(new Activation(t8, "TL3", TransitionOperation.Move, "TL3"));
         t8.GuardMappingList.add(grdT8);
 
         t8.Delay = 0;
@@ -870,10 +870,69 @@ public class Intersection1 {
 		        pn.Transitions.add(t24);
 		        
 		     
+		        // T26 -----------------------Car-------------------------
+		        PetriTransition t26 = new PetriTransition(pn);
+		        t26.TransitionName = "Tu1_o4car";
+		        t26.InputPlaceName.add("P_o4");
+		        t26.InputPlaceName.add("Pexit_car4");
+
 		        
 		        
+		        Condition T26Ct1 = new Condition(t26, "P_o4", TransitionCondition.HaveCar);
+
 		        
-		
+		        GuardMapping grdT26 = new GuardMapping();
+		        grdT26.condition = T26Ct1;
+		        grdT26.Activations.add(new Activation(t26, "P_o4", TransitionOperation.PopElementWithTarget,"Pexit_car4"));
+		        
+		        t26.GuardMappingList.add(grdT26);
+
+		        
+		        t26.Delay = 0;
+		        pn.Transitions.add(t26);   
+		        
+		     // T27 -----------------------Car-------------------------
+		        PetriTransition t27 = new PetriTransition(pn);
+		        t27.TransitionName = "Tu1_o1car";
+		        t27.InputPlaceName.add("P_o1");
+		        t27.InputPlaceName.add("Pexit_car1");
+
+		        
+		        
+		        Condition T27Ct1 = new Condition(t27, "P_o1", TransitionCondition.HaveCar);
+
+		        
+		        GuardMapping grdT27 = new GuardMapping();
+		        grdT27.condition = T27Ct1;
+		        grdT27.Activations.add(new Activation(t27, "P_o1", TransitionOperation.PopElementWithTarget,"Pexit_car1"));
+		        
+		        t27.GuardMappingList.add(grdT27);
+
+		        
+		        t27.Delay = 0;
+		        pn.Transitions.add(t27);   
+		        
+		        
+		     // T28 -----------------------Car-------------------------
+		        PetriTransition t28 = new PetriTransition(pn);
+		        t28.TransitionName = "Tu1_o2car";
+		        t28.InputPlaceName.add("P_o2");
+		        t28.InputPlaceName.add("Pexit_car2");
+
+		        
+		        
+		        Condition T28Ct1 = new Condition(t28, "P_o2", TransitionCondition.HaveCar);
+
+		        
+		        GuardMapping grdT28 = new GuardMapping();
+		        grdT28.condition = T28Ct1;
+		        grdT28.Activations.add(new Activation(t28, "P_o2", TransitionOperation.PopElementWithTarget,"Pexit_car2"));
+		        
+		        t28.GuardMappingList.add(grdT28);
+
+		        
+		        t28.Delay = 0;
+		        pn.Transitions.add(t28);   
 		        
 
 	        
