@@ -1,7 +1,6 @@
 package GUIs;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +10,8 @@ import DataOnly.Car;
 import Utilities.DataOverNetwork;
 
 import javax.swing.JTextPane;
-
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -49,7 +48,7 @@ public class InputCar extends JFrame {
 	 */
 	public InputCar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 318, 278);
+		setBounds(100, 100, 318, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,6 +81,19 @@ public class InputCar extends JFrame {
 		txtPlace.setBounds(10, 21, 285, 20);
 		contentPane.add(txtPlace);
 
+		// Add checkboxes for Priority, Bus, and Taxi
+		JCheckBox chkPriority = new JCheckBox("Priority");
+		chkPriority.setBounds(10, 190, 85, 20);
+		contentPane.add(chkPriority);
+
+		JCheckBox chkBus = new JCheckBox("Bus");
+		chkBus.setBounds(105, 190, 85, 20);
+		contentPane.add(chkBus);
+
+		JCheckBox chkTaxi = new JCheckBox("Taxi");
+		chkTaxi.setBounds(200, 190, 85, 20);
+		contentPane.add(chkTaxi);
+
 		JButton btnSend = new JButton("Send");
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -92,7 +104,17 @@ public class InputCar extends JFrame {
 					DataOverNetwork DataToSend = new DataOverNetwork();
 
 					DataCar temp = new DataCar();
-					Car c = new Car(txtModel.getText(), txtNumber.getText(), txtTarget.getText().split(","));
+					
+					// Create the Car object with the new attributes
+					Car c = new Car(
+						txtModel.getText(),
+						txtNumber.getText(),
+						txtTarget.getText().split(","),
+						chkPriority.isSelected(), // Get value from Priority checkbox
+						chkBus.isSelected(),     // Get value from Bus checkbox
+						chkTaxi.isSelected()     // Get value from Taxi checkbox
+					);
+					
 					temp.SetValue(c);
 					temp.SetName(txtPlace.getText());
 					DataToSend.petriObject = temp;
@@ -106,8 +128,7 @@ public class InputCar extends JFrame {
 				}
 			}
 		});
-		btnSend.setBounds(10, 192, 285, 44);
+		btnSend.setBounds(10, 230, 285, 44);
 		contentPane.add(btnSend);
-
 	}
 }

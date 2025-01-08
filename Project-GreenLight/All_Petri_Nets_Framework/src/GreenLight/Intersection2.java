@@ -59,7 +59,7 @@ public class Intersection2 {
         pn.PlaceList.add(p_tl5_left);
 
         DataString p_ptl5 = new DataString();
-        p_ptl5.SetName("PTL5");
+        p_ptl5.SetName("TL5");
         pn.PlaceList.add(p_ptl5);
 
         DataString UserReq_5 = new DataString();
@@ -74,10 +74,10 @@ public class Intersection2 {
         p_b5.SetName("P_b5");
         pn.PlaceList.add(p_b5);
 
-        DataTransfer OP9 = new DataTransfer();
-        OP9.SetName("OP9");
-        OP9.Value = new TransferOperation("localhost", "1081", "in5");
-        pn.PlaceList.add(OP9);
+        DataTransfer OP7 = new DataTransfer();
+        OP7.SetName("OP7");
+        OP7.Value = new TransferOperation("localhost", "1081", "IN7");
+        pn.PlaceList.add(OP7);
 
 
 
@@ -106,10 +106,10 @@ public class Intersection2 {
         p_b7.SetName("P_b7");
         pn.PlaceList.add(p_b7);
 
-        DataTransfer OP11 = new DataTransfer();
-        OP11.SetName("OP11");
-        OP11.Value = new TransferOperation("localhost", "1083", "in7");
-        pn.PlaceList.add(OP11);
+        DataTransfer OP9 = new DataTransfer();
+        OP9.SetName("OP9");
+        OP9.Value = new TransferOperation("localhost", "1083", "IN9");
+        pn.PlaceList.add(OP9);
 
 
         // -------------------------------------------------------------------------------------
@@ -134,10 +134,10 @@ public class Intersection2 {
         p_b6.SetName("P_b6");
         pn.PlaceList.add(p_b6);
 
-        DataTransfer OP10 = new DataTransfer();
-        OP10.SetName("OP10");
-        OP10.Value = new TransferOperation("localhost", "1083", "in6");
-        pn.PlaceList.add(OP10);
+        DataTransfer OP8 = new DataTransfer();
+        OP8.SetName("OP8");
+        OP8.Value = new TransferOperation("localhost", "1083", "IN8");
+        pn.PlaceList.add(OP8);
 
 
         // -------------------------------------------------------------------------------------
@@ -163,8 +163,19 @@ public class Intersection2 {
 
         DataTransfer OP10 = new DataTransfer();
         OP10.SetName("OP10");
-        OP10.Value = new TransferOperation("localhost", "1083", "in8");
+        OP10.Value = new TransferOperation("localhost", "1083", "IN10");
         pn.PlaceList.add(OP10);
+        
+        DataTransfer OP11 = new DataTransfer();
+        OP11.SetName("OP11");
+        OP11.Value = new TransferOperation("localhost", "1083", "IN11");
+        pn.PlaceList.add(OP11);
+        
+        
+        DataTransfer OP12 = new DataTransfer();
+        OP12.SetName("OP12");
+        OP12.Value = new TransferOperation("localhost", "1083", "IN12");
+        pn.PlaceList.add(OP12);
 
         // -------------------------------------------------------------------------------------
         // --------------------------------Exit lane1 - Bulevardul Unirii stanga-------
@@ -206,6 +217,12 @@ public class Intersection2 {
         DataCar PExit_car7 = new DataCar();
         PExit_car7.SetName("Pexit_car7");
         pn.PlaceList.add(PExit_car7);
+        
+        DataTransfer OP13 = new DataTransfer();
+        OP13.SetName("OP12");
+        OP13.Value = new TransferOperation("localhost", "1080", "P_a3");
+        pn.PlaceList.add(OP13);
+        
 
         // -------------------------------------------------------------------------------------
         // --------------------------------Exit lane2 - Bulevardul Mircea Voda jos-------
@@ -364,6 +381,25 @@ public class Intersection2 {
 
         t25.Delay = 0;
         pn.Transitions.add(t25);
+        
+        
+        
+
+     // T29 ------------------------------------------------
+        PetriTransition t30= new PetriTransition(pn);
+        t30.TransitionName = "T_send3";
+        t30.InputPlaceName.add("Pexit_car7");
+
+        Condition T30Ct1 = new Condition(t30, "Pexit_car7", TransitionCondition.NotNull);
+
+        GuardMapping grdT30 = new GuardMapping();
+        grdT30.condition = T30Ct1;
+        grdT30.Activations.add(new Activation(t30, "Pexit_car7", TransitionOperation.SendOverNetwork, "OP_Int3"));
+
+        t30.GuardMappingList.add(grdT30);
+
+        t30.Delay = 0;
+        pn.Transitions.add(t30);
 
         //Pana aici merge
 
@@ -405,34 +441,34 @@ public class Intersection2 {
         GuardMapping grdT29_new = new GuardMapping();
         grdT29_new .condition = T29Ct3;
         grdT29_new .Activations.add(new Activation(t29, "P_a5", TransitionOperation.Move, "P_a5"));
-        grdT29_new .Activations.add(new Activation(t29, "full", TransitionOperation.SendOverNetwork, "OP9"));
+        grdT29_new .Activations.add(new Activation(t29, "full", TransitionOperation.SendOverNetwork, "OP13"));
         t29.GuardMappingList.add(grdT29_new);
 
         t29.Delay = 0;
         pn.Transitions.add(t29);
 
         // T2 ------------------------------------------------
-        PetriTransition t30 = new PetriTransition(pn);
-        t30.TransitionName = "T_e5";
-        t30.InputPlaceName.add("P_x5");
-        t30.InputPlaceName.add("TL5");
+        PetriTransition t31 = new PetriTransition(pn);
+        t31.TransitionName = "T_e5";
+        t31.InputPlaceName.add("P_x5");
+        t31.InputPlaceName.add("TL5");
 
-        Condition T30Ct1 = new Condition(t30, "TL5", TransitionCondition.Equal, "green");
-        Condition T30Ct2 = new Condition(t30, "P_x5", TransitionCondition.HaveCar);
-        T30Ct1.SetNextCondition(LogicConnector.AND, T30Ct2);
+        Condition T31Ct1 = new Condition(t31, "TL5", TransitionCondition.Equal, "green");
+        Condition T31Ct2 = new Condition(t31, "P_x5", TransitionCondition.HaveCar);
+        T30Ct1.SetNextCondition(LogicConnector.AND, T31Ct2);
 
-        GuardMapping grdT30 = new GuardMapping();
-        grdT30.condition = T30Ct1;
-        grdT30.Activations.add(new Activation(t30, "P_x5", TransitionOperation.PopElementWithoutTarget, "P_b5"));
-        grdT30.Activations.add(new Activation(t30, "TL5", TransitionOperation.Move, "TL5"));
-
-
-
-        t30.GuardMappingList.add(grdT30);
+        GuardMapping grdT31 = new GuardMapping();
+        grdT31.condition = T31Ct1;
+        grdT31.Activations.add(new Activation(t31, "P_x5", TransitionOperation.PopElementWithoutTarget, "P_b5"));
+        grdT31.Activations.add(new Activation(t31, "TL5", TransitionOperation.Move, "TL5"));
 
 
-        t30.Delay = 0;
-        pn.Transitions.add(t30);
+
+        t31.GuardMappingList.add(grdT31);
+
+
+        t31.Delay = 0;
+        pn.Transitions.add(t31);
 
         // T5 ------------------------------------------------
         PetriTransition t5 = new PetriTransition(pn);
@@ -503,7 +539,7 @@ public class Intersection2 {
         GuardMapping grdT7_new = new GuardMapping();
         grdT7_new .condition = T7Ct3;
         grdT7_new .Activations.add(new Activation(t7, "P_a7", TransitionOperation.Move, "P_a7"));
-        grdT7_new .Activations.add(new Activation(t7, "full", TransitionOperation.SendOverNetwork, "OP9"));
+        grdT7_new .Activations.add(new Activation(t7, "full", TransitionOperation.SendOverNetwork, "OP13"));
         t7.GuardMappingList.add(grdT7_new);
 
         t7.Delay = 0;

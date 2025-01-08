@@ -212,6 +212,63 @@ public class Functions implements Serializable {
 		}
 		return false;
 	}
+	
+	public boolean HavePriority(PetriTransition t, ArrayList<DataCar> list) {
+	    if (list == null) return false;
+	    if (t == null) return false;
+
+	    for (DataCar car : list) {
+	        if (car != null && car.Value != null && car.Value.priority) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+	public boolean IsPriority(PetriTransition t, DataCar car) {
+	    if (car == null) return false;
+	    if (t == null) return false;
+
+	    return car.Value != null && car.Value.priority;
+	}
+
+	public boolean HaveBus(PetriTransition t, ArrayList<DataCar> list) {
+	    if (list == null) return false;
+	    if (t == null) return false;
+
+	    for (DataCar car : list) {
+	        if (car != null && car.Value != null && car.Value.bus) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+	public boolean IsBus(PetriTransition t, DataCar car) {
+	    if (car == null) return false;
+	    if (t == null) return false;
+
+	    return car.Value != null && car.Value.bus;
+	}
+
+	public boolean HaveTaxi(PetriTransition t, ArrayList<DataCar> list) {
+	    if (list == null) return false;
+	    if (t == null) return false;
+
+	    for (DataCar car : list) {
+	        if (car != null && car.Value != null && car.Value.taxi) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+	public boolean IsTaxi(PetriTransition t, DataCar car) {
+	    if (car == null) return false;
+	    if (t == null) return false;
+
+	    return car.Value != null && car.Value.taxi;
+	}
 
 	public boolean HaveREL(ArrayList<DataREL> list) {
 		if (list == null)

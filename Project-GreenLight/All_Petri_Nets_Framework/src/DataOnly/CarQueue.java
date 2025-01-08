@@ -4,125 +4,162 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import DataObjects.DataCar;
+import DataObjects.DataString;
 
 public class CarQueue implements Cloneable, Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	// Overriding clone() method of Object class
-	public CarQueue clone() throws CloneNotSupportedException {
-		return (CarQueue) super.clone();
-	}
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	public ArrayList<DataCar> Cars = new ArrayList<DataCar>();
-	public Integer Size = 5;
+    // Overriding clone() method of Object class
+    public CarQueue clone() throws CloneNotSupportedException {
+        return (CarQueue) super.clone();
+    }
 
-	public CarQueue() {
+    public ArrayList<DataCar> Cars = new ArrayList<DataCar>();
+    public Integer Size = 5;
 
-	}
+    public CarQueue() {
 
-	public boolean AddCar(DataCar car) {
-		if (Cars.size() < Size) {
-			Cars.add(car);
-			return true;
-		} else {
-			for (int i = 0; i < Cars.size(); i++) {
-				if (Cars.get(i) == null) {
-					Cars.set(i, car);
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+    }
 
-	public boolean CanAddCar() {
-		if (Cars.size() < Size) {
-			return true;
-		} else {
-			for (int i = 0; i < Cars.size(); i++) {
-				if (Cars.get(i) == null) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
-	public boolean CanNotAddCar() {
-		if (Cars.size() >= Size) {
-			return true;
-		} else {
-			for (int i = 0; i < Cars.size(); i++) {
-				if (Cars.get(i) == null) {
-					return false;
-				}
-			}
-		}
-		return false;
-	}
+    public boolean AddCar(DataCar car) {
+        if (Cars.size() < Size) {
+            Cars.add(car);
+            return true;
+        } else {
+            for (int i = 0; i < Cars.size(); i++) {
+                if (Cars.get(i) == null) {
+                    Cars.set(i, car);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	public DataCar PopCar(String target) {
-		Integer index = -1;
-		for (int i = 0; i < Cars.size(); i++) {
-			if (Cars.get(i) != null && Cars.get(i).Value != null)
-				if (Cars.get(i).Value.Targets.contains(target)) {
-					index = i;
-					break;
-				}
-		}
+    public boolean CanAddCar() {
+        if (Cars.size() < Size) {
+            return true;
+        } else {
+            for (int i = 0; i < Cars.size(); i++) {
+                if (Cars.get(i) == null) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-		if (index == -1)
-			return null;
-		if (Cars.get(index) != null) {
-			try {
-				DataCar temp = (DataCar) Cars.get(index).clone();
-				Cars.set(index, null);
-				return temp;
+    public boolean CanNotAddCar() {
+        if (Cars.size() >= Size) {
+            return true;
+        } else {
+            for (int i = 0; i < Cars.size(); i++) {
+                if (Cars.get(i) == null) {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
+    public DataCar PopCar(String target) {
+        Integer index = -1;
+        for (int i = 0; i < Cars.size(); i++) {
+            if (Cars.get(i) != null && Cars.get(i).Value != null)
+                if (Cars.get(i).Value.Targets.contains(target)) {
+                    index = i;
+                    break;
+                }
+        }
 
-	public DataCar PopCartWithoutTarget() {
-		Integer index = -1;
-		for (int i = 0; i < Cars.size(); i++) {
-			if (Cars.get(i) != null && Cars.get(i).Value != null) {
-				index = i;
-				break;
-			}
-		}
+        if (index == -1)
+            return null;
+        if (Cars.get(index) != null) {
+            try {
+                DataCar temp = (DataCar) Cars.get(index).clone();
+                Cars.set(index, null);
+                return temp;
 
-		if (index == -1)
-			return null;
-		if (Cars.get(index) != null) {
-			try {
-				DataCar temp = (DataCar) Cars.get(index).clone();
-				Cars.set(index, null);
-				return temp;
+            } catch (CloneNotSupportedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
+    public DataCar PopCartWithoutTarget() {
+        Integer index = -1;
+        for (int i = 0; i < Cars.size(); i++) {
+            if (Cars.get(i) != null && Cars.get(i).Value != null) {
+                index = i;
+                break;
+            }
+        }
 
-	public String toString() {
-		ArrayList<String> temp1 = new ArrayList<String>();
-		for (DataCar car : Cars) {
-			if (car == null)
-				temp1.add("NULL");
-			else
-				temp1.add(car.toString());
-		}
+        if (index == -1)
+            return null;
+        if (Cars.get(index) != null) {
+            try {
+                DataCar temp = (DataCar) Cars.get(index).clone();
+                Cars.set(index, null);
+                return temp;
 
-		return "(" + String.join(",", temp1) + ")";
-	}
-};
+            } catch (CloneNotSupportedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    // New method to handle taxi calling functionality
+    public DataCar PopTaxi(DataString req) {
+        String[] userRequest = req.Value.split(",");
+        ArrayList<String> userRequestArray = new ArrayList<>();
+
+        for (String request : userRequest) {
+            userRequestArray.add(request);
+        }
+
+        Integer index = -1;
+        for (int i = 0; i < Cars.size(); i++) {
+            if (Cars.get(i) != null && Cars.get(i).Value != null) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index == -1)
+            return null;
+
+        Cars.get(index).Value.Targets = userRequestArray;
+
+        if (Cars.get(index) != null) {
+            try {
+                DataCar temp = (DataCar) Cars.get(index).clone();
+                Cars.set(index, null);
+                return temp;
+
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public String toString() {
+        ArrayList<String> temp1 = new ArrayList<String>();
+        for (DataCar car : Cars) {
+            if (car == null)
+                temp1.add("NULL");
+            else
+                temp1.add(car.toString());
+        }
+
+        return "(" + String.join(",", temp1) + ")";
+    }
+}

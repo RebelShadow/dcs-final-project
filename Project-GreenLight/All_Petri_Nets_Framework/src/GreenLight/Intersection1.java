@@ -71,20 +71,9 @@ public class Intersection1 {
 
         DataTransfer op1 = new DataTransfer();
         op1.SetName("OP1");
-        op1.Value = new TransferOperation("localhost", "1081", "in1");
+        op1.Value = new TransferOperation("localhost", "1081", "IN1");
         pn.PlaceList.add(op1);
-        
-        DataTransfer op5 = new DataTransfer();
-        op5.SetName("OP5");
-        op5.Value = new TransferOperation("localhost", "1081", "in1");
-        pn.PlaceList.add(op5);
-        
-        DataTransfer op6 = new DataTransfer();
-        op6.SetName("OP6");
-        op6.Value = new TransferOperation("localhost", "1081", "in1");
-        pn.PlaceList.add(op6);
-        
-        
+
 
         // -------------------------------------------------------------------------------------
         // --------------------------------Lane3 - Bulevardul Unirii - dreapta -----------------
@@ -113,7 +102,7 @@ public class Intersection1 {
 
         DataTransfer op3 = new DataTransfer();
         op3.SetName("OP3");
-        op3.Value = new TransferOperation("localhost", "1081", "in3");
+        op3.Value = new TransferOperation("localhost", "1081", "IN3");
         pn.PlaceList.add(op3);
 
 
@@ -141,7 +130,7 @@ public class Intersection1 {
 
         DataTransfer op2 = new DataTransfer();
         op2.SetName("OP2");
-        op2.Value = new TransferOperation("localhost", "1081", "in2");
+        op2.Value = new TransferOperation("localhost", "1081", "IN2");
         pn.PlaceList.add(op2);
 
 
