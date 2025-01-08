@@ -74,10 +74,10 @@ public class Intersection2 {
         p_b5.SetName("P_b5");
         pn.PlaceList.add(p_b5);
 
-        DataTransfer op5 = new DataTransfer();
-        op5.SetName("OP5");
-        op5.Value = new TransferOperation("localhost", "1081", "in5");
-        pn.PlaceList.add(op5);
+        DataTransfer OP9 = new DataTransfer();
+        OP9.SetName("OP9");
+        OP9.Value = new TransferOperation("localhost", "1081", "in5");
+        pn.PlaceList.add(OP9);
 
 
 
@@ -106,10 +106,10 @@ public class Intersection2 {
         p_b7.SetName("P_b7");
         pn.PlaceList.add(p_b7);
 
-        DataTransfer op7 = new DataTransfer();
-        op7.SetName("OP7");
-        op7.Value = new TransferOperation("localhost", "1083", "in7");
-        pn.PlaceList.add(op7);
+        DataTransfer OP11 = new DataTransfer();
+        OP11.SetName("OP11");
+        OP11.Value = new TransferOperation("localhost", "1083", "in7");
+        pn.PlaceList.add(OP11);
 
 
         // -------------------------------------------------------------------------------------
@@ -134,10 +134,10 @@ public class Intersection2 {
         p_b6.SetName("P_b6");
         pn.PlaceList.add(p_b6);
 
-        DataTransfer op6 = new DataTransfer();
-        op6.SetName("OP6");
-        op6.Value = new TransferOperation("localhost", "1083", "in6");
-        pn.PlaceList.add(op6);
+        DataTransfer OP10 = new DataTransfer();
+        OP10.SetName("OP10");
+        OP10.Value = new TransferOperation("localhost", "1083", "in6");
+        pn.PlaceList.add(OP10);
 
 
         // -------------------------------------------------------------------------------------
@@ -161,10 +161,10 @@ public class Intersection2 {
         p_b8.SetName("P_b8");
         pn.PlaceList.add(p_b8);
 
-        DataTransfer op8 = new DataTransfer();
-        op8.SetName("OP8");
-        op8.Value = new TransferOperation("localhost", "1083", "in8");
-        pn.PlaceList.add(op8);
+        DataTransfer OP10 = new DataTransfer();
+        OP10.SetName("OP10");
+        OP10.Value = new TransferOperation("localhost", "1083", "in8");
+        pn.PlaceList.add(OP10);
 
         // -------------------------------------------------------------------------------------
         // --------------------------------Exit lane1 - Bulevardul Unirii stanga-------
@@ -245,9 +245,9 @@ public class Intersection2 {
         p_o5.SetName("P_o5");
         pn.PlaceList.add(p_o5);
 
-        DataCar p_o5exit = new DataCar();
-        p_o5exit.SetName("P_O5Exit");
-        pn.PlaceList.add(p_o5exit);
+        DataCar Pexit_car5 = new DataCar();
+        Pexit_car5.SetName("Pexit_car5");
+        pn.PlaceList.add(Pexit_car5);
 
         // -------------------------------------------------------------------------------------------
         // --------------------------------Intersection2-----------------------------------------------
@@ -280,7 +280,7 @@ public class Intersection2 {
         GuardMapping grdT3_new = new GuardMapping();
         grdT3_new .condition = T3Ct3;
         grdT3_new .Activations.add(new Activation(t3, "P_a6", TransitionOperation.Move, "P_a6"));
-        grdT3_new .Activations.add(new Activation(t3, "full", TransitionOperation.SendOverNetwork, "OP6"));
+        grdT3_new .Activations.add(new Activation(t3, "full", TransitionOperation.SendOverNetwork, "OP10"));
         t3.GuardMappingList.add(grdT3_new);
 
         t3.Delay = 0;
@@ -405,7 +405,7 @@ public class Intersection2 {
         GuardMapping grdT29_new = new GuardMapping();
         grdT29_new .condition = T29Ct3;
         grdT29_new .Activations.add(new Activation(t29, "P_a5", TransitionOperation.Move, "P_a5"));
-        grdT29_new .Activations.add(new Activation(t29, "full", TransitionOperation.SendOverNetwork, "OP5"));
+        grdT29_new .Activations.add(new Activation(t29, "full", TransitionOperation.SendOverNetwork, "OP9"));
         t29.GuardMappingList.add(grdT29_new);
 
         t29.Delay = 0;
@@ -456,7 +456,7 @@ public class Intersection2 {
         GuardMapping grdT5_new = new GuardMapping();
         grdT5_new .condition = T5Ct3;
         grdT5_new .Activations.add(new Activation(t5, "P_a8", TransitionOperation.Move, "P_a8"));
-        grdT5_new .Activations.add(new Activation(t5, "full", TransitionOperation.SendOverNetwork, "OP8"));
+        grdT5_new .Activations.add(new Activation(t5, "full", TransitionOperation.SendOverNetwork, "OP10"));
         t5.GuardMappingList.add(grdT5_new);
 
         t5.Delay = 0;
@@ -503,7 +503,7 @@ public class Intersection2 {
         GuardMapping grdT7_new = new GuardMapping();
         grdT7_new .condition = T7Ct3;
         grdT7_new .Activations.add(new Activation(t7, "P_a7", TransitionOperation.Move, "P_a7"));
-        grdT7_new .Activations.add(new Activation(t7, "full", TransitionOperation.SendOverNetwork, "OP7"));
+        grdT7_new .Activations.add(new Activation(t7, "full", TransitionOperation.SendOverNetwork, "OP9"));
         t7.GuardMappingList.add(grdT7_new);
 
         t7.Delay = 0;
@@ -855,7 +855,7 @@ public class Intersection2 {
 
         GuardMapping grdT26 = new GuardMapping();
         grdT26.condition = T26Ct1;
-        grdT26.Activations.add(new Activation(t26, "P_o8", TransitionOperation.PopElementWithTarget,"Pexit_car8"));
+        grdT26.Activations.add(new Activation(t26, "P_o8", TransitionOperation.PopElementWithoutTarget,"Pexit_car8"));
 
         t26.GuardMappingList.add(grdT26);
 
@@ -876,7 +876,7 @@ public class Intersection2 {
 
         GuardMapping grdT27 = new GuardMapping();
         grdT27.condition = T27Ct1;
-        grdT27.Activations.add(new Activation(t27, "P_o5", TransitionOperation.PopElementWithTarget,"Pexit_car5"));
+        grdT27.Activations.add(new Activation(t27, "P_o5", TransitionOperation.PopElementWithoutTarget,"Pexit_car5"));
 
         t27.GuardMappingList.add(grdT27);
 
@@ -897,7 +897,7 @@ public class Intersection2 {
 
         GuardMapping grdT28 = new GuardMapping();
         grdT28.condition = T28Ct1;
-        grdT28.Activations.add(new Activation(t28, "P_o6", TransitionOperation.PopElementWithTarget,"Pexit_car6"));
+        grdT28.Activations.add(new Activation(t28, "P_o6", TransitionOperation.PopElementWithoutTarget,"Pexit_car6"));
 
         t28.GuardMappingList.add(grdT28);
 

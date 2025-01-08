@@ -73,6 +73,18 @@ public class Intersection1 {
         op1.SetName("OP1");
         op1.Value = new TransferOperation("localhost", "1081", "in1");
         pn.PlaceList.add(op1);
+        
+        DataTransfer op5 = new DataTransfer();
+        op5.SetName("OP5");
+        op5.Value = new TransferOperation("localhost", "1081", "in1");
+        pn.PlaceList.add(op5);
+        
+        DataTransfer op6 = new DataTransfer();
+        op6.SetName("OP6");
+        op6.Value = new TransferOperation("localhost", "1081", "in1");
+        pn.PlaceList.add(op6);
+        
+        
 
         // -------------------------------------------------------------------------------------
         // --------------------------------Lane3 - Bulevardul Unirii - dreapta -----------------
@@ -239,7 +251,7 @@ public class Intersection1 {
         pn.PlaceList.add(p_o1);
 
         DataCar p_o1exit = new DataCar();
-        p_o1exit.SetName("P_O1Exit");
+        p_o1exit.SetName("P_o1Exit");
         pn.PlaceList.add(p_o1exit);
 
         //Data Transfer place for lane 3 to send to the next intersection
@@ -875,7 +887,7 @@ public class Intersection1 {
 		        
 		        GuardMapping grdT26 = new GuardMapping();
 		        grdT26.condition = T26Ct1;
-		        grdT26.Activations.add(new Activation(t26, "P_o4", TransitionOperation.PopElementWithTarget,"Pexit_car4"));
+		        grdT26.Activations.add(new Activation(t26, "P_o4", TransitionOperation.PopElementWithoutTarget,"Pexit_car4"));
 		        
 		        t26.GuardMappingList.add(grdT26);
 
@@ -887,7 +899,7 @@ public class Intersection1 {
 		        PetriTransition t27 = new PetriTransition(pn);
 		        t27.TransitionName = "Tu1_o1car";
 		        t27.InputPlaceName.add("P_o1");
-		        t27.InputPlaceName.add("Pexit_car1");
+		        t27.InputPlaceName.add("P_o1Exit");
 
 		        
 		        
@@ -896,13 +908,13 @@ public class Intersection1 {
 		        
 		        GuardMapping grdT27 = new GuardMapping();
 		        grdT27.condition = T27Ct1;
-		        grdT27.Activations.add(new Activation(t27, "P_o1", TransitionOperation.PopElementWithTarget,"Pexit_car1"));
+		        grdT27.Activations.add(new Activation(t27, "P_o1", TransitionOperation.PopElementWithoutTarget,"P_o1Exit"));
 		        
 		        t27.GuardMappingList.add(grdT27);
 
 		        
 		        t27.Delay = 0;
-		        pn.Transitions.add(t27);   
+		        pn.Transitions.add(t27);
 		        
 		        
 		     // T28 -----------------------Car-------------------------
@@ -918,13 +930,29 @@ public class Intersection1 {
 		        
 		        GuardMapping grdT28 = new GuardMapping();
 		        grdT28.condition = T28Ct1;
-		        grdT28.Activations.add(new Activation(t28, "P_o2", TransitionOperation.PopElementWithTarget,"Pexit_car2"));
+		        grdT28.Activations.add(new Activation(t28, "P_o2", TransitionOperation.PopElementWithoutTarget,"Pexit_car2"));
 		        
 		        t28.GuardMappingList.add(grdT28);
 
 		        
 		        t28.Delay = 0;
 		        pn.Transitions.add(t28);   
+		        
+		     // T29 ------------------------------------------------
+		        PetriTransition t29= new PetriTransition(pn);
+		        t29.TransitionName = "T_send5";
+		        t29.InputPlaceName.add("P_o1Exit");
+
+		        Condition T29Ct1 = new Condition(t29, "P_o1Exit", TransitionCondition.NotNull);
+
+		        GuardMapping grdT29 = new GuardMapping();
+		        grdT29.condition = T29Ct1;
+		        grdT29.Activations.add(new Activation(t29, "P_o1Exit", TransitionOperation.SendOverNetwork, "OP_Int2"));
+
+		        t29.GuardMappingList.add(grdT29);
+
+		        t29.Delay = 0;
+		        pn.Transitions.add(t29);
 		        
 
 	        
