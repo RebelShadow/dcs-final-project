@@ -84,7 +84,7 @@ public class Intersection1 {
 
         DataCarQueue p_x3 = new DataCarQueue();
         p_x3.Value.Size = 3; 
-        p_x3.SetName("P_x1");
+        p_x3.SetName("P_x3");
         pn.PlaceList.add(p_x3);
 
         DataString p_tl3 = new DataString();
@@ -777,7 +777,7 @@ public class Intersection1 {
 		        
 		     // T21 -----------------------Bus-------------------------
 		        PetriTransition t21 = new PetriTransition(pn);
-		        t21.TransitionName = "Ts_03";
+		        t21.TransitionName = "Ts_o3";
 		        t21.InputPlaceName.add("Px1_o3");
 		        t21.InputPlaceName.add("Ps_o3");
 		        
