@@ -174,9 +174,14 @@ public class Intersection2 {
         
         DataTransfer OP12 = new DataTransfer();
         OP12.SetName("OP12");
-        OP12.Value = new TransferOperation("localhost", "1083", "IN12");
+        OP12.Value = new TransferOperation("localhost", "1080", "P_a3");
         pn.PlaceList.add(OP12);
 
+        DataTransfer OP13 = new DataTransfer();
+        OP13.SetName("OP13");
+        OP13.Value = new TransferOperation("localhost", "1083", "IN13");
+        pn.PlaceList.add(OP13);
+        
         // -------------------------------------------------------------------------------------
         // --------------------------------Exit lane1 - Bulevardul Unirii stanga-------
         // -------------------------------------------------------------------------------------
@@ -218,10 +223,6 @@ public class Intersection2 {
         PExit_car7.SetName("Pexit_car7");
         pn.PlaceList.add(PExit_car7);
         
-        DataTransfer OP13 = new DataTransfer();
-        OP13.SetName("OP12");
-        OP13.Value = new TransferOperation("localhost", "1080", "P_a3");
-        pn.PlaceList.add(OP13);
         
 
         // -------------------------------------------------------------------------------------
@@ -265,6 +266,8 @@ public class Intersection2 {
         DataCar Pexit_car5 = new DataCar();
         Pexit_car5.SetName("Pexit_car5");
         pn.PlaceList.add(Pexit_car5);
+        
+        
 
         // -------------------------------------------------------------------------------------------
         // --------------------------------Intersection2-----------------------------------------------
@@ -394,7 +397,7 @@ public class Intersection2 {
 
         GuardMapping grdT30 = new GuardMapping();
         grdT30.condition = T30Ct1;
-        grdT30.Activations.add(new Activation(t30, "Pexit_car7", TransitionOperation.SendOverNetwork, "OP_Int3"));
+        grdT30.Activations.add(new Activation(t30, "Pexit_car7", TransitionOperation.SendOverNetwork, "OP12"));
 
         t30.GuardMappingList.add(grdT30);
 
@@ -441,7 +444,7 @@ public class Intersection2 {
         GuardMapping grdT29_new = new GuardMapping();
         grdT29_new .condition = T29Ct3;
         grdT29_new .Activations.add(new Activation(t29, "P_a5", TransitionOperation.Move, "P_a5"));
-        grdT29_new .Activations.add(new Activation(t29, "full", TransitionOperation.SendOverNetwork, "OP13"));
+        grdT29_new .Activations.add(new Activation(t29, "full", TransitionOperation.SendOverNetwork, "OP7"));
         t29.GuardMappingList.add(grdT29_new);
 
         t29.Delay = 0;
