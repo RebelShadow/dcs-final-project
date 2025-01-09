@@ -398,26 +398,41 @@ public class Intersection1 {
         PetriTransition t1 = new PetriTransition(pn);
         t1.TransitionName = "T_u1";
         t1.InputPlaceName.add("P_a1");
-        t1.InputPlaceName.add("P_x1");
 
         Condition T1Ct1 = new Condition(t1, "P_a1", TransitionCondition.NotNull);
         Condition T1Ct2 = new Condition(t1, "P_x1", TransitionCondition.CanAddCars);
         T1Ct1.SetNextCondition(LogicConnector.AND, T1Ct2);
-
-        Condition T1Ct3 = new Condition(t1, "P_a1", TransitionCondition.NotNull);
-        Condition T1Ct4 = new Condition(t1, "P_x1", TransitionCondition.CanNotAddCars);
-        T1Ct3.SetNextCondition(LogicConnector.AND, T1Ct4);
-
+        
         GuardMapping grdT1 = new GuardMapping();
-        grdT1.condition = T1Ct1;
+        grdT1.condition= T1Ct1;
         grdT1.Activations.add(new Activation(t1, "P_a1", TransitionOperation.AddElement, "P_x1"));
         t1.GuardMappingList.add(grdT1);
 
-        GuardMapping grdT1_new = new GuardMapping();
-        grdT1_new .condition = T1Ct3;
-        grdT1_new .Activations.add(new Activation(t1, "P_a1", TransitionOperation.Move, "P_a1"));
-        grdT1_new .Activations.add(new Activation(t1, "full", TransitionOperation.SendOverNetwork, "OP1"));
-        t1.GuardMappingList.add(grdT1_new);
+        // Bus condition
+        Condition T1Ct2_1 = new Condition(t1, "P_a1", TransitionCondition.NotNull);
+        Condition T1Ct2_2 = new Condition(t1, "P_x1", TransitionCondition.CanAddCars);
+        Condition T1Ct2_3 = new Condition(t1, "P_a1", TransitionCondition.IsBus);
+        T1Ct2_2.SetNextCondition(LogicConnector.AND, T1Ct2_3);
+        T1Ct2_1.SetNextCondition(LogicConnector.AND, T1Ct2_2);
+        
+        
+        GuardMapping grdT1_2 = new GuardMapping();
+        grdT1_2.condition= T1Ct2_1;
+        grdT1_2.Activations.add(new Activation(t1, "P_a1", TransitionOperation.AddElement, "P_x1"));
+        t1.GuardMappingList.add(grdT1_2);
+
+        // Priority condition
+        Condition T1Ct3_1 = new Condition(t1, "P_a1", TransitionCondition.NotNull);
+        Condition T1Ct3_2 = new Condition(t1, "P_x1", TransitionCondition.CanAddCars);
+        Condition T1Ct3_3 = new Condition(t1, "P_a1", TransitionCondition.IsPriorityCar);
+        T1Ct3_2.SetNextCondition(LogicConnector.AND, T1Ct3_3);
+        T1Ct3_1.SetNextCondition(LogicConnector.AND, T1Ct3_2);
+        
+        
+        GuardMapping grdT1_3 = new GuardMapping();
+        grdT1_3.condition= T1Ct3_1;
+        grdT1_3.Activations.add(new Activation(t1, "P_a1", TransitionOperation.AddElement, "P_x1"));
+        t1.GuardMappingList.add(grdT1_3);
 
         t1.Delay = 0;
         pn.Transitions.add(t1);

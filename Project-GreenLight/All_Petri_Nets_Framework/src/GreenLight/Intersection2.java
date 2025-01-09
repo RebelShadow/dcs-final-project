@@ -458,7 +458,7 @@ public class Intersection2 {
 
         Condition T31Ct1 = new Condition(t31, "TL5", TransitionCondition.Equal, "green");
         Condition T31Ct2 = new Condition(t31, "P_x5", TransitionCondition.HaveCar);
-        T30Ct1.SetNextCondition(LogicConnector.AND, T31Ct2);
+        T31Ct1.SetNextCondition(LogicConnector.AND, T31Ct2);
 
         GuardMapping grdT31 = new GuardMapping();
         grdT31.condition = T31Ct1;
